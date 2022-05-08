@@ -17,8 +17,6 @@ public class playerScript : MonoBehaviour
     Transform[] points;
 
   
-
-   [SerializeField] float drag;
     [SerializeField] float speed;
     void Start()
     {
@@ -48,15 +46,14 @@ public class playerScript : MonoBehaviour
         grapplePosition = closestGrapplePoint(points);
 
 
-        if( Input.GetMouseButton(0))
+        if( Input.GetMouseButton(0) && grapplePosition != null)
         {
            
             mousePos = grapplePosition.position;
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, grapplePosition.position);
-
-            rb.drag = drag;
+       
 
             if (Vector2.Distance(transform.position, grapplePosition.position) > grappleDistance)
             {
