@@ -16,7 +16,8 @@ public class playerScript : MonoBehaviour
     GameObject[] pointsObject;
     Transform[] points;
 
-  
+    
+
     [SerializeField] float speed;
     void Start()
     {
@@ -43,6 +44,8 @@ public class playerScript : MonoBehaviour
         grappleCode();
 
         
+        
+
     }
 
 
@@ -88,10 +91,13 @@ public class playerScript : MonoBehaviour
             lineRenderer.SetPosition(1, grapplePosition.position);
 
 
-           
-                Vector3 ForceDir = grapplePosition.position - transform.position;
-            ForceDir = Quaternion.AngleAxis(30, ForceDir);
-                rb.AddForce(ForceDir, ForceMode2D.Force);
+        
+            if(Vector2.Distance(grapplePosition.position, transform.position) < grappleDistance)
+            {
+            
+                rb.AddForce(grapplePosition.position - transform.position, ForceMode2D.Force);
+            }
+            
             
         }
         else
@@ -99,7 +105,7 @@ public class playerScript : MonoBehaviour
             lineRenderer.enabled = false;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
+          
         }
     }
 
