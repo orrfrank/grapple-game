@@ -39,44 +39,10 @@ public class playerScript : MonoBehaviour
     
     void Update()
     {
-
-       
-
-        
-        grapplePosition = closestGrapplePoint(points);
-
-
-        if( Input.GetMouseButton(0) && grapplePosition != null)
-        {
-           
-            mousePos = grapplePosition.position;
-            lineRenderer.enabled = true;
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, grapplePosition.position);
-       
-
-            if (Vector2.Distance(transform.position, grapplePosition.position) > grappleDistance)
-            {
-                rb.AddForce(grapplePosition.position - transform.position, ForceMode2D.Force);
-            }
-        }
-        else
-        {
-            lineRenderer.enabled = false;
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
-         
-        }
-
-
-
-        
-
-
         movement();
+        grappleCode();
 
-
-
+        
     }
 
 
@@ -105,6 +71,35 @@ public class playerScript : MonoBehaviour
         }
         return closestPoint;
 
+    }
+
+
+    void grappleCode()
+    {
+        grapplePosition = closestGrapplePoint(points);
+
+
+        if (Input.GetMouseButton(0) && grapplePosition != null)
+        {
+
+            mousePos = grapplePosition.position;
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, grapplePosition.position);
+
+
+            if (Vector2.Distance(transform.position, grapplePosition.position) > grappleDistance)
+            {
+                rb.AddForce(grapplePosition.position - transform.position, ForceMode2D.Force);
+            }
+        }
+        else
+        {
+            lineRenderer.enabled = false;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+        }
     }
 
 
