@@ -88,10 +88,11 @@ public class playerScript : MonoBehaviour
             lineRenderer.SetPosition(1, grapplePosition.position);
 
 
-            if (Vector2.Distance(transform.position, grapplePosition.position) > grappleDistance)
-            {
-                rb.AddForce(grapplePosition.position - transform.position, ForceMode2D.Force);
-            }
+           
+                Vector3 ForceDir = grapplePosition.position - transform.position;
+            ForceDir = Quaternion.AngleAxis(30, ForceDir);
+                rb.AddForce(ForceDir, ForceMode2D.Force);
+            
         }
         else
         {
