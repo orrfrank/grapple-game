@@ -18,6 +18,7 @@ public class playerScript : MonoBehaviour
 
   
     [SerializeField] float speed;
+    [SerializeField] float grappleSpeed;
     void Start()
     {
         
@@ -88,20 +89,36 @@ public class playerScript : MonoBehaviour
             lineRenderer.SetPosition(1, grapplePosition.position);
 
 
-           
-                Vector3 ForceDir = grapplePosition.position - transform.position;
-            ForceDir = Quaternion.AngleAxis(30, ForceDir);
-                rb.AddForce(ForceDir, ForceMode2D.Force);
-            
+            transform.LookAt(grapplePosition, Vector3.left);
+            Vector3 ForceDir = grapplePosition.position - transform.position;
+
+            float rotationZ = Mathf.Atan2(ForceDir.y, ForceDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+
+            if (rb.velocity.x > 20f)
+            {
+                rb.velocity = new Vector3(20, rb.velocity.y);
+            }
+            if (rb.velocity.y > 20f)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 20f);
+            }
+
+
+            if (Vector2.Distance(grapplePosition.position, transform.position) > grappleDistance)
+            {
+                rb.AddForce(ForceDir.normalized * grappleSpeed, ForceMode2D.Force);
+
+            }
         }
         else
         {
             lineRenderer.enabled = false;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 1f);
         }
     }
 
-
+    
 }
