@@ -10,6 +10,8 @@ public class playerScript : MonoBehaviour
     public LineRenderer lineRenderer;
 
     [SerializeField] float grappleDistance;
+    [SerializeField] float maxGrappleDistance;
+
 
     public static Vector2 mousePos;
 
@@ -19,6 +21,7 @@ public class playerScript : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float grappleSpeed;
+    [SerializeField] float maxSpeed;
     void Start()
     {
 
@@ -82,7 +85,7 @@ public class playerScript : MonoBehaviour
 
         if (Input.GetMouseButton(0) && grapplePosition != null)
         {
-
+           
             mousePos = grapplePosition.position;
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, transform.position);
@@ -95,20 +98,13 @@ public class playerScript : MonoBehaviour
             float rotationZ = Mathf.Atan2(ForceDir.y, ForceDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
 
-            if (rb.velocity.x > 20f)
-            {
-                rb.velocity = new Vector3(20, rb.velocity.y);
-            }
-            if (rb.velocity.y > 20f)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, 20f);
-            }
 
+            
 
             if (Vector2.Distance(grapplePosition.position, transform.position) > grappleDistance)
             {
                 rb.AddForce(ForceDir.normalized * grappleSpeed, ForceMode2D.Force);
-
+                limitPlayerSpeed(maxSpeed);
             }
         }
         else
@@ -119,6 +115,31 @@ public class playerScript : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 1f);
         }
     }
+
+
+
+    void limitPlayerSpeed(float speed)
+    {
+        if (rb.velocity.x > speed)
+        {
+            rb.velocity = new Vector3(speed, rb.velocity.y);
+        }
+        if (rb.velocity.x < -speed)
+        {
+            rb.velocity = new Vector3(-speed, rb.velocity.y);
+        }
+
+        if (rb.velocity.y > speed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, speed);
+        }
+        if (rb.velocity.y < -speed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, -speed);
+        }
+    }
+    
+
 
 
 }
