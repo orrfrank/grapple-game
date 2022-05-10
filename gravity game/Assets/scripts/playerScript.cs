@@ -16,34 +16,34 @@ public class playerScript : MonoBehaviour
     GameObject[] pointsObject;
     Transform[] points;
 
-  
+
     [SerializeField] float speed;
     [SerializeField] float grappleSpeed;
     void Start()
     {
-        
-        
-      pointsObject = GameObject.FindGameObjectsWithTag("point");
-      points = new Transform[pointsObject.Length];
+
+
+        pointsObject = GameObject.FindGameObjectsWithTag("point");
+        points = new Transform[pointsObject.Length];
         for (int i = 0; i < pointsObject.Length; i++)
         {
             points[i] = pointsObject[i].transform;
         }
-         
 
-       
-     
-       
-     
+
+
+
+
+
     }
 
-    
+
     void Update()
     {
         movement();
         grappleCode();
 
-        
+
     }
 
 
@@ -52,11 +52,11 @@ public class playerScript : MonoBehaviour
 
     void movement()
     {
-        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime, ForceMode2D.Impulse);
     }
 
 
-     Transform closestGrapplePoint(Transform[] points)
+    Transform closestGrapplePoint(Transform[] points)
     {
         Transform closestPoint = null;
 
@@ -64,7 +64,7 @@ public class playerScript : MonoBehaviour
         foreach (Transform point in points)
         {
             float dist = Vector2.Distance(point.position, mousePos);
-            if(dist < minDist)
+            if (dist < minDist)
             {
                 closestPoint = point;
                 minDist = dist;
@@ -120,5 +120,5 @@ public class playerScript : MonoBehaviour
         }
     }
 
-    
+
 }
