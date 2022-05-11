@@ -99,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
   maxGrappleDistance: 0
   speed: 5
   grappleSpeed: 10
-  maxSpeed: 15
+  maxSpeed: 10
 --- !u!120 &832372385362872991
 LineRenderer:
   m_ObjectHideFlags: 0
