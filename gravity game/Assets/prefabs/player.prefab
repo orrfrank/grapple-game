@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 832372385362872993}
   - component: {fileID: 832372385362872992}
   - component: {fileID: 832372385362872995}
-  - component: {fileID: 832372385362872994}
   - component: {fileID: 832372385362872991}
+  - component: {fileID: 2804140757672817622}
+  - component: {fileID: 9129741474145784595}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -133,26 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &832372385362872994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832372385362872997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0219997f64bca4e4b8d14c51f105cfd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grapplePosition: {fileID: 0}
-  rb: {fileID: 832372385362872992}
-  lineRenderer: {fileID: 832372385362872991}
-  grappleDistance: 5
-  maxGrappleDistance: 0
-  speed: 5
-  grappleSpeed: 10
-  maxSpeed: 15
 --- !u!120 &832372385362872991
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -251,3 +232,35 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!231 &2804140757672817622
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832372385362872997}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 2.8405986
+  m_DampingRatio: 0
+  m_Frequency: 1
+--- !u!114 &9129741474145784595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832372385362872997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac8e6e757f9f8442ab2d37657d43609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

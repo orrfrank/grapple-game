@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4527487233193605145}
   - component: {fileID: 4527487233193605146}
   - component: {fileID: 4527487233193605147}
+  - component: {fileID: 9202290888947851754}
   m_Layer: 0
   m_Name: grapple point
   m_TagString: point
@@ -179,3 +180,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outline: {fileID: 4527487232911139338}
+--- !u!50 &9202290888947851754
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527487233193605144}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
